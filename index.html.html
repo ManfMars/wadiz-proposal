@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>와디즈 입점 제안서 | 숙소 펀딩 전문 PD</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1B4332;
+    --green: #2D6A4F;
+    --mid: #40916C;
+    --light: #74C69D;
+    --pale: #D8F3DC;
+    --cream: #FDFAF6;
+    --warm: #F5F0E8;
+    --ink: #1A1A1A;
+    --muted: #6B7280;
+    --gold: #C8960C;
+    --gold-light: #FEF3C7;
+    --red: #E83828;
+    --red-light: #FFF0EE;
+    --border: #E5E0D8;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Pretendard', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(253,250,246,0.93);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-family: 'Pretendard', sans-serif; font-size: 15px; font-weight: 700; color: var(--forest); }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--forest); }
+  .nav-cta {
+    font-size: 13px; font-weight: 500; background: var(--forest); color: var(--white);
+    border: none; border-radius: 6px; padding: 7px 16px; cursor: pointer;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--green); }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 56px; }
+  .hero-left {
+    background: var(--forest);
+    padding: 6rem 4rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-left::before {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: rgba(116,198,157,0.12);
+  }
+  .hero-left::after {
+    content: ''; position: absolute; bottom: -60px; left: -60px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(64,145,108,0.18);
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(116,198,157,0.15); border: 1px solid rgba(116,198,157,0.3);
+    border-radius: 100px; padding: 6px 14px; margin-bottom: 2rem; width: fit-content;
+  }
+  .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--light); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+  .hero-badge span { font-size: 12px; color: var(--light); font-weight: 500; }
+  .hero-eyebrow { font-size: 12px; font-weight: 500; color: var(--light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+  .hero-title {
+    font-family: 'Pretendard', sans-serif;
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 700; color: var(--white);
+    line-height: 1.35; letter-spacing: -0.02em; margin-bottom: 1.5rem;
+  }
+  .hero-title em { color: var(--light); font-style: normal; }
+  .hero-desc { font-size: 14.5px; color: rgba(255,255,255,0.62); line-height: 1.85; max-width: 400px; margin-bottom: 2.5rem; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--light); color: var(--forest); font-weight: 700; font-size: 14px;
+    border: none; border-radius: 8px; padding: 13px 24px; cursor: pointer;
+    text-decoration: none; transition: all 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { background: #95d5b2; transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: rgba(255,255,255,0.65); font-size: 14px;
+    border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 13px 24px;
+    cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+
+  .hero-right { background: var(--warm); padding: 5rem 3rem 4rem; display: flex; flex-direction: column; justify-content: center; gap: 1rem; }
+  .stat-card {
+    background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1.3rem 1.5rem; display: flex; align-items: center; gap: 1.2rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+  .stat-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .si-green { background: var(--pale); }
+  .si-gold { background: var(--gold-light); }
+  .si-red { background: var(--red-light); }
+  .stat-value { font-family: 'Pretendard', sans-serif; font-size: 20px; font-weight: 700; color: var(--forest); line-height: 1.2; }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* SECTIONS */
+  section { padding: 5rem 0; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+  .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  .section-eyebrow { font-size: 11px; font-weight: 700; color: var(--mid); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .section-title { font-family: 'Pretendard', sans-serif; font-size: clamp(1.55rem, 2.8vw, 2rem); font-weight: 700; color: var(--forest); letter-spacing: -0.02em; line-height: 1.35; margin-bottom: 0.6rem; }
+  .divider { width: 36px; height: 3px; background: var(--light); border-radius: 2px; margin: 1rem 0 2rem; }
+  .section-sub { font-size: 14.5px; color: var(--muted); max-width: 700px; line-height: 1.8; }
+
+  /* HOW */
+  #how { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .flow-steps { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 2.5rem; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .flow-step { padding: 1.8rem 1.2rem; border-right: 1px solid var(--border); }
+  .flow-step:last-child { border-right: none; }
+  .flow-num { font-family: 'Pretendard', sans-serif; font-size: 28px; font-weight: 700; color: var(--pale); margin-bottom: 0.8rem; }
+  .flow-title { font-size: 13px; font-weight: 700; color: var(--forest); margin-bottom: 0.4rem; word-break: keep-all; }
+  .flow-desc { font-size: 11.5px; color: var(--muted); line-height: 1.65; word-break: keep-all; }
+
+  /* CASES */
+  #cases { background: var(--cream); }
+  .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+  .case-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+  .case-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+  .case-head { padding: 1.3rem 1.6rem; display: flex; align-items: center; gap: 12px; }
+  .case-head.hotel { background: var(--forest); }
+  .case-head.glamp { background: var(--green); }
+  .case-type-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; background: rgba(255,255,255,0.2); color: var(--white); padding: 3px 8px; border-radius: 4px; text-transform: uppercase; }
+  .case-name { font-size: 15px; font-weight: 700; color: var(--white); }
+  .case-body { padding: 1.4rem 1.6rem; }
+  .case-highlight { background: var(--warm); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1.2rem; }
+  .case-amount { font-family: 'Pretendard', sans-serif; font-size: 22px; font-weight: 700; color: var(--forest); }
+  .case-amount-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .case-rows { display: flex; flex-direction: column; }
+  .case-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .case-row:last-child { border-bottom: none; }
+  .case-row.period { background: var(--pale); margin: 0 -1.6rem; padding: 8px 1.6rem; border-bottom: 1px solid var(--border); }
+  .case-row.period .cr-label { color: var(--green); font-weight: 600; }
+  .case-row.period .cr-val { color: var(--forest); font-weight: 700; }
+  .cr-label { color: var(--muted); }
+  .cr-val { font-weight: 600; color: var(--ink); }
+  .case-margin { margin-top: 1rem; padding: 1rem 1.1rem; background: var(--forest); border-radius: 10px; }
+  .case-margin-title { font-size: 12px; font-weight: 700; color: var(--light); margin-bottom: 0.5rem; }
+  .case-margin-formula { font-size: 11px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 0.7rem; }
+  .case-margin-result { display: flex; align-items: baseline; gap: 10px; margin-bottom: 0.4rem; }
+  .margin-net { font-size: 20px; font-weight: 700; color: var(--light); font-family: 'Pretendard', sans-serif; }
+  .margin-rate { font-size: 12px; font-weight: 700; color: var(--gold); background: rgba(200,150,12,0.15); padding: 2px 8px; border-radius: 4px; }
+  .case-margin-note { font-size: 10.5px; color: rgba(255,255,255,0.35); }
+  .case-link { margin-left: auto; font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.75); text-decoration: none; border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; padding: 3px 8px; white-space: nowrap; transition: all 0.2s; }
+  .case-link:hover { color: var(--white); border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.1); }
+
+  /* PRICING */
+  #pricing { background: var(--white); border-top: 1px solid var(--border); }
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+  .pricing-card { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .pricing-card.featured { border-color: var(--mid); border-width: 2px; }
+  .pricing-head { padding: 1.5rem 1.6rem; border-bottom: 1px solid var(--border); background: var(--warm); }
+  .pricing-head.dark { background: var(--forest); }
+  .pricing-badge-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; background: var(--light); color: var(--forest); padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 0.5rem; }
+  .pricing-name { font-size: 15px; font-weight: 700; color: var(--forest); }
+  .pricing-name.w { color: var(--white); }
+  .pricing-sub-text { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .pricing-sub-text.w { color: rgba(255,255,255,0.55); }
+  .pricing-body { padding: 1.5rem 1.6rem; }
+  .pricing-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .pricing-row:last-child { border-bottom: none; }
+  .pr-name { color: var(--muted); }
+  .pr-price { font-weight: 700; color: var(--forest); }
+  .pricing-note { margin-top: 1rem; padding: 0.8rem 1rem; background: var(--pale); border-radius: 8px; font-size: 12px; color: var(--green); line-height: 1.65; }
+
+  /* PROCON */
+  #procon { background: var(--cream); }
+  .procon-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.5rem; margin-top: 2.5rem; }
+  .procon-card { border-radius: 16px; padding: 2rem; }
+  .procon-card.pros { background: var(--white); border: 1px solid var(--border); }
+  .procon-card.cons { background: var(--warm); border: 1px solid var(--border); }
+  .procon-head { display: flex; align-items: center; gap: 10px; margin-bottom: 1.4rem; }
+  .procon-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .pi-g { background: var(--pale); }
+  .pi-r { background: var(--red-light); }
+  .procon-title { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .pro-item { display: flex; gap: 10px; margin-bottom: 1.1rem; }
+  .pro-dot { width: 20px; height: 20px; border-radius: 50%; background: var(--pale); color: var(--forest); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .pro-text strong { font-size: 13px; color: var(--forest); display: block; margin-bottom: 2px; }
+  .pro-text span { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .con-item { display: flex; gap: 10px; margin-bottom: 1rem; }
+  .con-dash { color: var(--muted); flex-shrink: 0; }
+  .con-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .honest-note { margin-top: 1.4rem; padding: 1rem 1.1rem; background: rgba(232,56,40,0.06); border: 1px solid rgba(232,56,40,0.15); border-radius: 10px; font-size: 12.5px; color: #7B2020; line-height: 1.7; }
+
+  /* ROI */
+  #roi { background: var(--forest); }
+  #roi .section-eyebrow { color: var(--light); }
+  #roi .section-title { color: var(--white); }
+  #roi .divider { background: var(--mid); }
+  #roi .section-sub { color: rgba(255,255,255,0.5); }
+  .roi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+  .roi-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.6rem; }
+  .roi-label { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
+  .roi-value { font-family: 'Pretendard', sans-serif; font-size: 24px; font-weight: 700; color: var(--light); margin-bottom: 0.3rem; }
+  .roi-note { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.55; }
+  .roi-disclaimer { margin-top: 2rem; padding: 1.2rem 1.5rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.75; text-align: center; }
+
+  /* CTA */
+  #cta { background: var(--cream); text-align: center; padding: 6rem 2rem; }
+  .cta-title { font-family: 'Pretendard', sans-serif; font-size: clamp(1.5rem, 2.8vw, 2.1rem); font-weight: 700; color: var(--forest); margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+  .cta-sub { font-size: 14.5px; color: var(--muted); margin-bottom: 2.5rem; line-height: 1.8; }
+  .cta-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .btn-cta-p { background: var(--forest); color: var(--white); font-size: 15px; font-weight: 700; border: none; border-radius: 10px; padding: 14px 30px; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
+  .btn-cta-p:hover { background: var(--green); transform: translateY(-1px); }
+  .btn-cta-g { background: transparent; color: var(--forest); font-size: 15px; font-weight: 500; border: 1.5px solid var(--mid); border-radius: 10px; padding: 14px 30px; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
+  .btn-cta-g:hover { background: var(--pale); }
+  .cta-note { margin-top: 2rem; font-size: 13px; color: var(--muted); }
+  .cta-note a { color: var(--mid); text-decoration: none; }
+
+  /* RESERVATION & SETTLEMENT */
+  #settlement { background: var(--white); border-top: 1px solid var(--border); }
+  .settlement-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+  .settle-card { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
+  .settle-head { padding: 1.3rem 1.6rem; display: flex; align-items: center; gap: 10px; }
+  .settle-head.booking { background: var(--forest); }
+  .settle-head.payout  { background: var(--green); }
+  .settle-head-icon { font-size: 20px; }
+  .settle-head-title { font-size: 15px; font-weight: 700; color: var(--white); }
+  .settle-head-sub { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 1px; }
+  .settle-body { padding: 1.4rem 1.6rem; background: var(--white); }
+  .settle-desc { font-size: 13.5px; color: var(--muted); line-height: 1.8; margin-bottom: 1.2rem; }
+  .settle-highlight { background: var(--pale); border-radius: 8px; padding: 0.9rem 1.1rem; font-size: 13px; color: var(--forest); line-height: 1.7; font-weight: 500; }
+  .settle-timeline { margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0; }
+  .stl-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .stl-row:last-child { border-bottom: none; }
+  .stl-dot { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .stl-dot.d1 { background: var(--pale); color: var(--forest); }
+  .stl-dot.d2 { background: var(--forest); color: var(--white); }
+  .stl-dot.d3 { background: var(--mid); color: var(--white); }
+  .stl-dot.d4 { background: var(--gold-light); color: var(--gold); }
+  .stl-label { font-size: 12px; font-weight: 700; color: var(--forest); margin-bottom: 2px; }
+  .stl-note { font-size: 12px; color: var(--muted); line-height: 1.55; }
+  .payout-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; }
+  .payout-badge.early { background: var(--pale); color: var(--forest); }
+  .payout-badge.late  { background: var(--gold-light); color: var(--gold); }
+  .settle-tag { font-size: 11px; background: var(--red-light); color: var(--red); padding: 2px 7px; border-radius: 4px; font-weight: 600; margin-left: 6px; vertical-align: middle; }
+
+  /* PAYOUT RATIO SECTION */
+  .payout-section { margin-top: 2rem; }
+  .payout-section-title { font-size: 14px; font-weight: 700; color: var(--forest); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 8px; }
+  .payout-key-badge { background: var(--forest); color: var(--white); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; }
+  .payout-section-sub { font-size: 12.5px; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
+  .payout-tracks { display: flex; flex-direction: column; gap: 1.2rem; }
+  .payout-track { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .payout-track-head { padding: 0.75rem 1.2rem; background: var(--warm); display: flex; align-items: center; justify-content: space-between; }
+  .payout-track-name { font-size: 12px; font-weight: 700; color: var(--forest); }
+  .payout-track-cond { font-size: 11px; color: var(--muted); }
+  .payout-bar-wrap { padding: 1rem 1.2rem 1.2rem; }
+  .payout-bar { display: flex; border-radius: 8px; overflow: hidden; height: 36px; margin-bottom: 0.6rem; }
+  .payout-seg { display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; transition: opacity 0.2s; }
+  .payout-seg.s-pre  { background: var(--forest); color: var(--white); }
+  .payout-seg.s-mid  { background: var(--mid); color: var(--white); }
+  .payout-seg.s-last { background: var(--gold); color: var(--white); }
+  .payout-seg.s-all  { background: var(--mid); color: var(--white); }
+  .payout-seg.s-last2{ background: var(--gold); color: var(--white); }
+  .payout-legend { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .payout-legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); }
+  .payout-legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+  .payout-star-note { margin-top: 1rem; padding: 0.8rem 1rem; background: var(--pale); border-radius: 8px; font-size: 12px; color: var(--green); line-height: 1.65; }
+
+  footer { background: var(--ink); padding: 2rem; text-align: center; font-size: 12px; color: rgba(255,255,255,0.25); }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+  .fade-in { animation: fadeUp 0.55s ease both; }
+  .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.2s; } .d3 { animation-delay: 0.3s; } .d4 { animation-delay: 0.4s; }
+
+  @media (max-width: 768px) {
+    /* NAV */
+    nav { padding: 0 1.2rem; }
+    nav .nav-links { display: none; }
+    .nav-logo { font-size: 13px; }
+    .nav-cta { font-size: 12px; padding: 6px 12px; }
+
+    /* HERO */
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 5rem 1.5rem 2.5rem; }
+    .hero-left::before { width: 180px; height: 180px; top: -40px; right: -40px; }
+    .hero-left::after { width: 120px; height: 120px; }
+    .hero-title { font-size: 2rem; }
+    .hero-desc { font-size: 13.5px; }
+    .hero-actions { flex-direction: column; }
+    .btn-primary, .btn-ghost { text-align: center; padding: 13px 20px; }
+    .hero-right { padding: 2rem 1.5rem 2.5rem; gap: 0.75rem; }
+    .stat-value { font-size: 17px; }
+    .stat-label { font-size: 11px; }
+
+    /* SECTIONS */
+    section { padding: 3rem 0; }
+    .container, .container-wide { padding: 0 1.5rem; }
+    .section-title { font-size: 1.4rem; }
+    .section-sub { font-size: 13.5px; }
+
+    /* HOW */
+    .flow-steps { grid-template-columns: 1fr; border-radius: 10px; }
+    .flow-step { border-right: none; border-bottom: 1px solid var(--border); padding: 1.4rem 1.2rem; }
+    .flow-step:last-child { border-bottom: none; }
+    .flow-num { font-size: 22px; margin-bottom: 0.5rem; }
+    .flow-title { font-size: 13px; }
+    .flow-desc { font-size: 12px; }
+
+    /* CASES */
+    .cases-grid { grid-template-columns: 1fr; }
+    .case-amount { font-size: 19px; }
+    .case-margin-formula { font-size: 10.5px; }
+    .margin-net { font-size: 17px; }
+
+    /* PRICING */
+    .pricing-grid { grid-template-columns: 1fr; }
+
+    /* PROCON */
+    .procon-grid { grid-template-columns: 1fr; }
+
+    /* ROI */
+    .roi-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+    .roi-value { font-size: 20px; }
+
+    /* SETTLEMENT */
+    .settlement-grid { grid-template-columns: 1fr; }
+    .payout-section-title { flex-wrap: wrap; gap: 6px; }
+    .payout-tracks { gap: 0.8rem; }
+    .payout-track-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .payout-bar { height: 30px; }
+    .payout-seg { font-size: 10px; }
+
+    /* SVG TIMELINE */
+    #settlement .container > div > div:first-of-type { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    /* TARGET */
+    #target > .container > div { grid-template-columns: 1fr !important; }
+
+    /* BUSINESS CARD */
+    .cta-title { font-size: 1.35rem; }
+  }
+
+  /* 아주 작은 화면 */
+  @media (max-width: 390px) {
+    .hero-title { font-size: 1.7rem; }
+    .stat-card { padding: 1rem 1.1rem; }
+    .stat-icon { width: 36px; height: 36px; font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">와디즈 숙소 펀딩 제안</div>
+  <div class="nav-links">
+    <a href="#how">운영 방식</a>
+    <a href="#cases">사례</a>
+    <a href="#pricing">견적</a>
+    <a href="#procon">장단점</a>
+    <a href="#settlement">예약·정산</a>
+  </div>
+  <a href="http://pf.kakao.com/_ybqsX" target="_blank" class="nav-cta">💬 카카오톡 문의</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left fade-in">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span>와디즈 숙소 펀딩 전문 PD</span>
+    </div>
+    <p class="hero-eyebrow">Wadiz × 숙박업 입점 제안서</p>
+    <h1 class="hero-title">
+      2~3개월 치 예약을<br>
+      미리 채우는<br>
+      <em>숙박 매출 채널</em>
+    </h1>
+    <p class="hero-desc">
+      와디즈 입점부터 운영 위탁까지 원스톱으로 지원합니다.<br>
+      직접 운영이 어려운 경우, 전문 에이전시 연결도 가능합니다.<br><br>
+      보통 호텔·리조트는 중간 에이전시를 통해 플랫폼을 관리합니다. 그 역할을 저희가 합니다.
+    </p>
+    <div class="hero-actions">
+      <a href="https://www.wadiz.kr/web/main" target="_blank" class="btn-primary">와디즈 바로가기</a>
+      <a href="http://pf.kakao.com/_ybqsX" target="_blank" class="btn-ghost">💬 카카오톡 문의</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="stat-card fade-in d1">
+      <div class="stat-icon si-green">📦</div>
+      <div>
+        <div class="stat-value">숙박 프로젝트 평균 2,500만원</div>
+        <div class="stat-label">프로젝트당 평균 매출 (1,000만 ~ 1.5억 범위)</div>
+        <div class="stat-label" style="margin-top:3px; color:var(--mid); font-size:11px; font-weight:600;">2026년 기준</div>
+      </div>
+    </div>
+    <div class="stat-card fade-in d2">
+      <div class="stat-icon si-gold">🏨</div>
+      <div>
+        <div class="stat-value">1억 5,000만원</div>
+        <div class="stat-label">포도호텔 단일 프로젝트 매출 달성</div>
+      </div>
+    </div>
+    <div class="stat-card fade-in d2">
+      <div class="stat-icon si-gold">⛺</div>
+      <div>
+        <div class="stat-value">8,700만원</div>
+        <div class="stat-label">홍천 글램핑장 단일 프로젝트 · 누적 2억원 달성</div>
+      </div>
+    </div>
+    <div class="stat-card fade-in d3">
+      <div class="stat-icon si-green">📅</div>
+      <div>
+        <div class="stat-value">2~3개월 사전예약</div>
+        <div class="stat-label">성수기·비수기 예약을 미리 확보하는 구조</div>
+      </div>
+    </div>
+    <div class="stat-card fade-in d4">
+      <div class="stat-icon si-red">💳</div>
+      <div>
+        <div class="stat-value">후불 구조</div>
+        <div class="stat-label">판매된 금액에서만 수수료(약 15%) 정산</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <p class="section-eyebrow">운영 방식</p>
+    <h2 class="section-title">입점부터 정산까지, 전 과정 지원</h2>
+    <div class="divider"></div>
+    <p class="section-sub">직접 운영이 어려우신 경우 전문 운영사 연결이 가능합니다. 와디즈 PD가 제안하고, 에이전시가 실제 운영을 맡는 구조입니다.</p>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-num">01</div>
+          <div class="flow-title">입점 제안과 상담</div>
+          <div class="flow-desc">숙소 현황을 먼저 파악하고 와디즈 입점 방향을 함께 기획합니다. 예상 매출 범위도 솔직하게 안내드립니다.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">02</div>
+          <div class="flow-title">상세페이지와 소재 제작</div>
+          <div class="flow-desc">전환율 높은 와디즈 상세페이지를 제작하고, SNS 광고용 릴스 소재 3종을 함께 만듭니다.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">03</div>
+          <div class="flow-title">펀딩 오픈과 운영</div>
+          <div class="flow-desc">와디즈 광고와 SNS 마케팅을 병행합니다. 운영 위탁을 원하시면 전문 에이전시를 연결해 드립니다.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">04</div>
+          <div class="flow-title">정산 후 재오픈</div>
+          <div class="flow-desc">펀딩 종료 후 정산이 진행됩니다. 기반이 쌓일수록 재오픈할 때마다 매출이 올라가는 구조입니다.</div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="container">
+    <p class="section-eyebrow">성공 사례</p>
+    <h2 class="section-title">이미 검증된 숙소 펀딩 레퍼런스</h2>
+    <div class="divider"></div>
+    <p class="section-sub">포도호텔, 홍천 글램핑장 등 다양한 유형의 숙소에서 실제 매출이 발생한 사례입니다.</p>
+
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-head hotel">
+          <span class="case-type-badge">호텔</span>
+          <span class="case-name">포도호텔</span>
+          <a href="https://www.wadiz.kr/web/campaign/detail/402210" target="_blank" class="case-link">와디즈에서 보기 →</a>
+        </div>
+        <div class="case-body">
+          <div class="case-highlight">
+            <div class="case-amount">1억 5,000만원</div>
+            <div class="case-amount-sub">단일 프로젝트 매출 달성</div>
+          </div>
+          <div class="case-rows">
+            <div class="case-row period"><span class="cr-label">오픈예정</span><span class="cr-val">4월 24일 ~ 5월 11일</span></div>
+            <div class="case-row period"><span class="cr-label">본펀딩</span><span class="cr-val">5월 11일 ~ 5월 18일</span></div>
+            <div class="case-row"><span class="cr-label">와디즈 수수료</span><span class="cr-val">약 15% (부가세 별도)</span></div>
+            <div class="case-row"><span class="cr-label">광고비</span><span class="cr-val">500만원 +</span></div>
+            <div class="case-row"><span class="cr-label">상세페이지 제작</span><span class="cr-val">350만원</span></div>
+            <div class="case-row"><span class="cr-label">위탁 운영</span><span class="cr-val">수익쉐어 5%</span></div>
+          </div>
+          <div class="case-margin">
+            <div class="case-margin-title">💰 예상 실마진 계산</div>
+            <div class="case-margin-formula">1억 5,000만 − [수수료 2,475만 + 광고비 500만 + 상세페이지 350만 + 위탁 750만]</div>
+            <div class="case-margin-result">
+              <span class="margin-net">약 1억 925만원</span>
+              <span class="margin-rate">마진율 약 73%</span>
+            </div>
+            <div class="case-margin-note">* 수수료 부가세(10%) 포함 실질 16.5% / 위탁 수익쉐어 5% 기준</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-head glamp">
+          <span class="case-type-badge">글램핑</span>
+          <span class="case-name">홍천 글램핑장</span>
+          <a href="https://www.wadiz.kr/web/campaign/detail/313092" target="_blank" class="case-link">와디즈에서 보기 →</a>
+        </div>
+        <div class="case-body">
+          <div class="case-highlight">
+            <div class="case-amount">8,700만원</div>
+            <div class="case-amount-sub">단일 프로젝트 · 누적 2억원 달성</div>
+          </div>
+          <div class="case-rows">
+            <div class="case-row period"><span class="cr-label">오픈예정</span><span class="cr-val">11월 13일 ~ 11월 27일</span></div>
+            <div class="case-row period"><span class="cr-label">본펀딩</span><span class="cr-val">11월 27일 ~ 12월 6일</span></div>
+            <div class="case-row"><span class="cr-label">와디즈 수수료</span><span class="cr-val">약 15% (부가세 별도)</span></div>
+            <div class="case-row"><span class="cr-label">광고비</span><span class="cr-val">회당 300만원 +</span></div>
+            <div class="case-row"><span class="cr-label">상세페이지 + 소재</span><span class="cr-val">350만원 + 50만원</span></div>
+            <div class="case-row"><span class="cr-label">위탁 운영</span><span class="cr-val">수익쉐어 5%</span></div>
+          </div>
+          <div class="case-margin">
+            <div class="case-margin-title">💰 예상 실마진 계산</div>
+            <div class="case-margin-formula">8,700만 − [수수료 1,436만 + 광고비 300만 + 상세페이지 400만 + 위탁 435만]</div>
+            <div class="case-margin-result">
+              <span class="margin-net">약 6,129만원</span>
+              <span class="margin-rate">마진율 약 70%</span>
+            </div>
+            <div class="case-margin-note">* 수수료 부가세(10%) 포함 실질 16.5% / 위탁 수익쉐어 5% 기준</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <p class="section-eyebrow">견적 안내</p>
+    <h2 class="section-title">사진·영상 보유 여부에 따라 달라집니다</h2>
+    <div class="divider"></div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-head">
+          <div class="pricing-name">소재 보유형</div>
+          <div class="pricing-sub-text">사진·영상이 이미 있는 경우</div>
+        </div>
+        <div class="pricing-body">
+          <div class="pricing-row"><span class="pr-name">상세페이지 제작</span><span class="pr-price">150만원~</span></div>
+          <div class="pricing-row"><span class="pr-name">광고소재 (릴스 3종)</span><span class="pr-price">50만원</span></div>
+          <div class="pricing-row"><span class="pr-name">위탁 운영</span><span class="pr-price">정가형 150만원 or 수익쉐어 5%</span></div>
+          <div class="pricing-row"><span class="pr-name">와디즈 플랫폼 수수료</span><span class="pr-price">약 15% (후불)</span></div>
+          <div class="pricing-note">✅ 구축비 후불 진행 가능<br>판매액에서 수수료·수익쉐어 차감 → 초기 부담 최소화<br><span style="color: var(--muted); font-size: 11px;">* 후불 진행은 와디즈 전문 에이전시와 협의가 필요하며, 펀딩 종료 후 정산 시 후불 정산료 10%가 추가됩니다.</span></div>
+          <div class="pricing-note" style="background: var(--warm); color: var(--muted); margin-top: 0.5rem;">💡 위탁 운영은 와디즈 전문 에이전시에서 진행하며, 필수 선택은 아닙니다.</div>
+        </div>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-head dark">
+          <div class="pricing-badge-tag">가장 많이 선택</div>
+          <div class="pricing-name w">풀패키지형</div>
+          <div class="pricing-sub-text w">사진·영상 없는 경우 · 소재 제작 포함</div>
+        </div>
+        <div class="pricing-body">
+          <div class="pricing-row"><span class="pr-name">상세페이지 제작</span><span class="pr-price">350만원~</span></div>
+          <div class="pricing-row"><span class="pr-name">광고소재 (릴스 3종)</span><span class="pr-price">50만원</span></div>
+          <div class="pricing-row"><span class="pr-name">위탁 운영</span><span class="pr-price">정가형 150만원 or 수익쉐어 5%</span></div>
+          <div class="pricing-row"><span class="pr-name">와디즈 플랫폼 수수료</span><span class="pr-price">약 15% (후불)</span></div>
+          <div class="pricing-note">✅ 팔린 만큼 추가 수익쉐어<br>평균 매출 2,500만원 기준으로 수익성 시뮬레이션 제공<br><span style="color: var(--muted); font-size: 11px;">* 후불 진행은 와디즈 전문 에이전시와 협의가 필요하며, 펀딩 종료 후 정산 시 후불 정산료 10%가 추가됩니다.</span></div>
+          <div class="pricing-note" style="background: var(--warm); color: var(--muted); margin-top: 0.5rem;">💡 위탁 운영은 와디즈 전문 에이전시에서 진행하며, 필수 선택은 아닙니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROS / CONS -->
+<section id="procon">
+  <div class="container">
+    <p class="section-eyebrow">솔직한 장단점</p>
+    <h2 class="section-title">모든 영상이 터지지 않듯, 모든 펀딩이 대박 나진 않습니다</h2>
+    <div class="divider"></div>
+
+    <div class="procon-grid">
+      <div class="procon-card pros">
+        <div class="procon-head">
+          <div class="procon-icon pi-g">✅</div>
+          <div class="procon-title">이런 점이 좋습니다</div>
+        </div>
+        <div class="pro-item">
+          <div class="pro-dot">1</div>
+          <div class="pro-text">
+            <strong>2~3개월 사전예약 확보</strong>
+            <span>성수기 예약을 미리 받고, 비수기에도 안정적인 매출 기반을 만들 수 있습니다.</span>
+          </div>
+        </div>
+        <div class="pro-item">
+          <div class="pro-dot">2</div>
+          <div class="pro-text">
+            <strong>후불 구조 — 팔린 만큼만 비용 발생</strong>
+            <span>구축비 후불 가능. 와디즈 수수료도 판매 후 정산. 초기 자금 부담이 낮습니다.</span>
+          </div>
+        </div>
+        <div class="pro-item">
+          <div class="pro-dot">3</div>
+          <div class="pro-text">
+            <strong>초기 숙소도 단기간 마케팅 가능</strong>
+            <span>후기가 부족해도 펀딩 후원자 리뷰로 인지도를 빠르게 올릴 수 있습니다. 네이버·에어비앤비 전이 효과도 있습니다.</span>
+          </div>
+        </div>
+        <div class="pro-item">
+          <div class="pro-dot">4</div>
+          <div class="pro-text">
+            <strong>기반이 쌓일수록 매출 우상향</strong>
+            <span>네이버 지도·에어비앤비처럼 플랫폼 기반이 쌓이면 재오픈 시 매출이 올라가는 구조입니다.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="procon-card cons">
+        <div class="procon-head">
+          <div class="procon-icon pi-r">⚠️</div>
+          <div class="procon-title">솔직하게 말씀드립니다</div>
+        </div>
+        <div class="con-item">
+          <div class="con-dash">—</div>
+          <div class="con-text"><strong style="color:var(--ink);">매출이 보장되지 않습니다.</strong><br>광고비를 집행한다고 반드시 목표 매출이 나오는 건 아닙니다.</div>
+        </div>
+        <div class="con-item">
+          <div class="con-dash">—</div>
+          <div class="con-text">유튜브에 영상을 올린다고 모든 영상의 조회수가 높지 않듯, 펀딩도 프로젝트마다 성과 차이가 큽니다.</div>
+        </div>
+        <div class="con-item">
+          <div class="con-dash">—</div>
+          <div class="con-text">숙소의 콘텐츠 매력도, 가격 경쟁력, 시즌 타이밍이 성과에 큰 영향을 미칩니다.</div>
+        </div>
+        <div class="honest-note">
+          그래서 저는 상담 전에 숙소 현황을 먼저 파악하고, <strong>현실적인 예상 범위를 먼저 말씀드립니다.</strong> 잘 될 가능성이 높은 경우에만 진행을 권장합니다.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section id="roi">
+  <div class="container">
+    <p class="section-eyebrow">수익 시뮬레이션</p>
+    <h2 class="section-title">평균 매출 기준으로 계산하면</h2>
+    <div class="divider"></div>
+    <p class="section-sub">아래 수치는 와디즈 숙소 펀딩 평균 매출 2,500만원 기준입니다. 실제 성과는 다를 수 있습니다.</p>
+
+    <div class="roi-grid">
+      <div class="roi-card">
+        <div class="roi-label">평균 펀딩 매출</div>
+        <div class="roi-value">2,500만원</div>
+        <div class="roi-note">1,000만 ~ 1.5억 범위에서 분포</div>
+      </div>
+      <div class="roi-card">
+        <div class="roi-label">비용 차감 후 순매출 (소재 보유형 기준)</div>
+        <div class="roi-value">약 1,800만원</div>
+        <div class="roi-note">수수료 15% + 운영비 + 수익쉐어 차감 후 예시</div>
+      </div>
+      <div class="roi-card">
+        <div class="roi-label">재오픈 시 기대 효과</div>
+        <div class="roi-value">매출 우상향</div>
+        <div class="roi-note">플랫폼 기반 누적될수록 재오픈 성과 상승</div>
+      </div>
+    </div>
+    <div class="roi-disclaimer">
+      ⚠️ 위 수치는 평균값 기반 예시이며, 실제 성과를 보장하지 않습니다.<br>
+      상담 시 숙소 현황에 맞는 현실적인 예상 범위를 별도로 안내해 드립니다.
+    </div>
+  </div>
+</section>
+
+<!-- SETTLEMENT -->
+<section id="settlement">
+  <div class="container">
+    <p class="section-eyebrow">예약 & 정산 구조</p>
+    <h2 class="section-title">기존 예약 채널과 겹치지 않고, 정산은 빠르게</h2>
+    <div class="divider"></div>
+    <p class="section-sub">와디즈 숙박권 구조와 25년 2월 변경된 정산정책을 함께 안내드립니다.</p>
+
+    <div class="settlement-grid">
+
+      <!-- 예약 방식 -->
+      <div class="settle-card">
+        <div class="settle-head booking">
+          <div class="settle-head-icon">📅</div>
+          <div>
+            <div class="settle-head-title">예약 방식</div>
+            <div class="settle-head-sub">기존 채널과 충돌 없이 운영 가능</div>
+          </div>
+        </div>
+        <div class="settle-body">
+          <p class="settle-desc">
+            와디즈는 실제 날짜를 선택하는 예약 시스템이 없습니다.<br>
+            <strong style="color:var(--forest);">'예약권(숙박권)'을 판매</strong>하는 구조로,
+            펀딩 종료 후 개별 연락 또는 링크를 통해 날짜를 지정하는 방식입니다.
+          </p>
+          <div class="settle-highlight">
+            ✅ 기존 네이버 예약·자체 예약 채널과 완전히 분리 운영<br>
+            ✅ 성수기 방어용으로 사전 예약권만 판매하고 실제 일정은 별도 조율 가능<br>
+            ✅ 오버부킹 걱정 없이 병행 운영
+          </div>
+        </div>
+      </div>
+
+      <!-- 정산 구조 -->
+      <div class="settle-card">
+        <div class="settle-head payout">
+          <div class="settle-head-icon">💰</div>
+          <div>
+            <div class="settle-head-title">정산 구조 (25.02.01 변경)</div>
+            <div class="settle-head-sub">이용권·숙박권 → 제공 직후 정산으로 빨라짐</div>
+          </div>
+        </div>
+        <div class="settle-body">
+          <div class="settle-timeline">
+
+            <div class="stl-row">
+              <div class="stl-dot d1">1</div>
+              <div>
+                <div class="stl-label">펀딩 종료</div>
+                <div class="stl-note">프로젝트 마감 후 정산 절차 시작</div>
+              </div>
+            </div>
+
+            <div class="stl-row">
+              <div class="stl-dot d2">2</div>
+              <div>
+                <div class="stl-label">선정산 지급 <span class="payout-badge early">펀딩·국내단독</span></div>
+                <div class="stl-note">선정산 내역서 발급 후 정산금 우선 지급<br>(달성금액 5천만원 이상 시 60% 먼저 지급)</div>
+              </div>
+            </div>
+
+            <div class="stl-row">
+              <div class="stl-dot d3">3</div>
+              <div>
+                <div class="stl-label">이용권·숙박권 제공 완료 → 최종정산 <span class="settle-tag">변경</span></div>
+                <div class="stl-note">
+                  <strong style="color:var(--forest);">AS-IS</strong> : 이용기간 만료 후 정산 (느림)<br>
+                  <strong style="color:var(--forest);">TO-BE</strong> : 이용권·숙박권 제공 직후 정산 (빠름)<br>
+                  리워드 제공 완료 시점 이후 25일 경과 시 최종 정산
+                </div>
+              </div>
+            </div>
+
+            <div class="stl-row">
+              <div class="stl-dot d4">+</div>
+              <div>
+                <div class="stl-label">달성금액 5천만원 이상인 경우 <span class="payout-badge late">추가 조건</span></div>
+                <div class="stl-note">정산금의 20%는 이용기간 만료 후 별도 지급<br>(나머지 80%는 이용권 제공 직후 정산)</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 정산 시점 & 비율 상세 -->
+    <div class="payout-section">
+      <div class="payout-section-title">
+        💡 선정산이 핵심입니다
+        <span class="payout-key-badge">숙박업 최대 장점</span>
+      </div>
+      <p class="payout-section-sub">
+        숙박업은 객실을 미리 팔고도 정산이 늦으면 현금 흐름이 막힙니다.<br>
+        와디즈는 펀딩 직후 선정산이 가능하고, 이용권 제공 후 대부분의 금액이 바로 정산됩니다.
+      </p>
+
+      <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; padding:1.5rem 1.2rem; overflow-x:auto;">
+        <svg width="100%" viewBox="0 0 680 400" role="img" style="min-width:520px;">
+          <title>와디즈 이용권·숙박권 정산 시점 타임라인</title>
+          <desc>펀딩/국내단독과 특별구성/한정판의 정산 비율 및 시점을 타임라인으로 표시</desc>
+          <defs>
+            <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+
+          <!-- 달성 5천만원 이상 케이스 안내 -->
+          <rect x="20" y="12" width="640" height="22" rx="4" fill="#FEF3C7" stroke="#C8960C" stroke-width="0.5"/>
+          <text font-size="11.5" font-family="Pretendard, sans-serif" fill="#92650A" x="330" y="24" text-anchor="middle" dominant-baseline="central">▼ 아래는 달성금액 5천만원 이상인 이용권·숙박권 기준입니다</text>
+
+          <!-- ── ROW 1: 펀딩/국내단독 ── -->
+          <rect x="20" y="48" width="98" height="56" rx="8" fill="#2D6A4F" stroke="#2D6A4F" stroke-width="0.5"/>
+          <text font-size="12" font-weight="700" font-family="Pretendard, sans-serif" fill="#ffffff" x="69" y="69" text-anchor="middle" dominant-baseline="central">펀딩 /</text>
+          <text font-size="12" font-weight="700" font-family="Pretendard, sans-serif" fill="#ffffff" x="69" y="87" text-anchor="middle" dominant-baseline="central">국내단독</text>
+
+          <line x1="118" y1="76" x2="644" y2="76" stroke="#888780" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+          <!-- 점선 박스 (이용완료 구간) -->
+          <rect x="490" y="36" width="150" height="80" rx="6" fill="none" stroke="#378ADD" stroke-width="1.2" stroke-dasharray="5 3"/>
+
+          <!-- 점 4개 -->
+          <circle cx="150" cy="76" r="5.5" fill="#444441"/>
+          <circle cx="270" cy="76" r="5.5" fill="#444441"/>
+          <circle cx="420" cy="76" r="5.5" fill="#444441"/>
+          <circle cx="560" cy="76" r="5.5" fill="#444441"/>
+
+          <!-- 비율 박스 -->
+          <rect x="188" y="42" width="48" height="22" rx="4" fill="#F1EFE8" stroke="#D3D1C7" stroke-width="0.5"/>
+          <text font-size="12" font-weight="700" font-family="Pretendard, sans-serif" fill="#2C2C2A" x="212" y="53" text-anchor="middle" dominant-baseline="central">60%</text>
+
+          <rect x="322" y="42" width="48" height="22" rx="4" fill="#F1EFE8" stroke="#D3D1C7" stroke-width="0.5"/>
+          <text font-size="12" font-weight="700" font-family="Pretendard, sans-serif" fill="#2C2C2A" x="346" y="53" text-anchor="middle" dominant-baseline="central">20%</text>
+
+          <rect x="500" y="42" width="48" height="22" rx="4" fill="#F1EFE8" stroke="#D3D1C7" stroke-width="0.5"/>
+          <text font-size="12" font-weight="700" font-family="Pretendard, sans-serif" fill="#2C2C2A" x="524" y="53" text-anchor="middle" dominant-baseline="central">20%</text>
+
+          <!-- 점 아래 라벨 -->
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#5F5E5A" x="150" y="93" text-anchor="middle">프로젝트</text>
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#5F5E5A" x="150" y="107" text-anchor="middle">종료</text>
+
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#5F5E5A" x="270" y="93" text-anchor="middle">선정산</text>
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#5F5E5A" x="270" y="107" text-anchor="middle">지급</text>
+
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#C8190C" x="420" y="93" text-anchor="middle">이용가능</text>
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#C8190C" x="420" y="107" text-anchor="middle">수단 제공 완료</text>
+
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#C8190C" x="556" y="93" text-anchor="middle">이용완료</text>
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#C8190C" x="556" y="107" text-anchor="middle">(기간 만료)</text>
+
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#5F5E5A" x="620" y="93" text-anchor="middle">3차정산</text>
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#5F5E5A" x="620" y="107" text-anchor="middle">지급</text>
+
+          <!-- ── 구분선 ── -->
+          <line x1="20" y1="148" x2="655" y2="148" stroke="#E5E0D8" stroke-width="0.75"/>
+
+          <!-- ── ROW 2: 특별구성/한정판 ── -->
+          <rect x="20" y="168" width="98" height="56" rx="8" fill="#2D6A4F" stroke="#2D6A4F" stroke-width="0.5"/>
+          <text font-size="12" font-weight="700" font-family="Pretendard, sans-serif" fill="#ffffff" x="69" y="189" text-anchor="middle" dominant-baseline="central">특별구성 /</text>
+          <text font-size="12" font-weight="700" font-family="Pretendard, sans-serif" fill="#ffffff" x="69" y="207" text-anchor="middle" dominant-baseline="central">한정판</text>
+
+          <line x1="118" y1="196" x2="644" y2="196" stroke="#888780" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+          <!-- 점선 박스 -->
+          <rect x="465" y="156" width="175" height="80" rx="6" fill="none" stroke="#378ADD" stroke-width="1.2" stroke-dasharray="5 3"/>
+
+          <!-- 점 3개 -->
+          <circle cx="150" cy="196" r="5.5" fill="#444441"/>
+          <circle cx="390" cy="196" r="5.5" fill="#444441"/>
+          <circle cx="540" cy="196" r="5.5" fill="#444441"/>
+
+          <!-- 비율 박스 -->
+          <rect x="242" y="162" width="48" height="22" rx="4" fill="#F1EFE8" stroke="#D3D1C7" stroke-width="0.5"/>
+          <text font-size="12" font-weight="700" font-family="Pretendard, sans-serif" fill="#2C2C2A" x="266" y="173" text-anchor="middle" dominant-baseline="central">80%</text>
+
+          <rect x="478" y="162" width="48" height="22" rx="4" fill="#F1EFE8" stroke="#D3D1C7" stroke-width="0.5"/>
+          <text font-size="12" font-weight="700" font-family="Pretendard, sans-serif" fill="#2C2C2A" x="502" y="173" text-anchor="middle" dominant-baseline="central">20%</text>
+
+          <!-- 점 아래 라벨 -->
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#5F5E5A" x="150" y="213" text-anchor="middle">프로젝트</text>
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#5F5E5A" x="150" y="227" text-anchor="middle">종료</text>
+
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#C8190C" x="390" y="213" text-anchor="middle">이용가능</text>
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#C8190C" x="390" y="227" text-anchor="middle">수단 제공 완료</text>
+
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#5F5E5A" x="448" y="213" text-anchor="middle">1차정산</text>
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#5F5E5A" x="448" y="227" text-anchor="middle">지급</text>
+
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#C8190C" x="538" y="213" text-anchor="middle">이용완료</text>
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#C8190C" x="538" y="227" text-anchor="middle">(기간 만료)</text>
+
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#5F5E5A" x="622" y="213" text-anchor="middle">2차정산</text>
+          <text font-size="11" font-family="Pretendard, sans-serif" fill="#5F5E5A" x="622" y="227" text-anchor="middle">지급</text>
+
+          <!-- ── 범례 & 안내 ── -->
+          <rect x="20" y="258" width="640" height="52" rx="8" fill="#FFF0EE" stroke="#F0997B" stroke-width="0.5"/>
+          <circle cx="40" cy="276" r="4" fill="#E83828"/>
+          <text font-size="11.5" font-family="Pretendard, sans-serif" fill="#712B13" x="52" y="280" dominant-baseline="central">달성금액 5천만원 이상인 이용권·숙박권의 경우,</text>
+          <text font-size="11.5" font-family="Pretendard, sans-serif" fill="#993C1D" font-weight="700" x="52" y="298" dominant-baseline="central">최종 정산금의 20%가 이용완료(이용가능기간 만료) 후 지급됩니다.</text>
+
+          <rect x="20" y="322" width="640" height="50" rx="8" fill="#E1F5EE" stroke="#5DCAA5" stroke-width="0.5"/>
+          <rect x="34" y="334" width="12" height="12" rx="2" fill="none" stroke="#085041" stroke-width="1.2" stroke-dasharray="3 2"/>
+          <text font-size="11.5" font-family="Pretendard, sans-serif" fill="#085041" x="52" y="342" dominant-baseline="central">점선 박스 = 이용기간 만료 후 별도 지급되는 구간</text>
+          <text font-size="11.5" font-family="Pretendard, sans-serif" fill="#0F6E56" font-weight="700" x="52" y="360" dominant-baseline="central">숙박업 추천: 펀딩 or 국내단독 → 선정산 가능, 현금 흐름 확보에 유리</text>
+        </svg>
+      </div>
+
+      <div class="payout-star-note">
+        ✅ <strong>숙박업 추천 진행 방식 : 펀딩 or 국내단독</strong><br>
+        선정산이 가능한 구조라 현금 흐름 확보에 유리합니다. 달성금액 5천만원 미만이면 이용권 제공 직후 잔금 전액이 정산되어 가장 빠릅니다.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TARGET -->
+<section id="target" style="background: var(--warm); border-top: 1px solid var(--border);">
+  <div class="container">
+    <p class="section-eyebrow">이런 분께 맞습니다</p>
+    <h2 class="section-title">우리 숙소에 맞는 채널인지 먼저 확인하세요</h2>
+    <div class="divider"></div>
+
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 0.5rem;">
+
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: var(--pale); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">🌱</div>
+        <div>
+          <div style="font-size: 14px; font-weight: 700; color: var(--forest); margin-bottom: 0.4rem;">후기·인지도가 부족한 신규·초기 숙소</div>
+          <div style="font-size: 13px; color: var(--muted); line-height: 1.65;">개업 초기라 리뷰가 적어도 펀딩 후원자 리뷰로 단기간에 인지도를 끌어올릴 수 있습니다.</div>
+        </div>
+      </div>
+
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: var(--pale); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">📅</div>
+        <div>
+          <div style="font-size: 14px; font-weight: 700; color: var(--forest); margin-bottom: 0.4rem;">성수기 예약을 미리 확보하고 싶은 숙소</div>
+          <div style="font-size: 13px; color: var(--muted); line-height: 1.65;">2~3개월 전 사전 예약권 판매로 성수기를 미리 채우고, 비수기 공실도 줄일 수 있습니다.</div>
+        </div>
+      </div>
+
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: var(--pale); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">📈</div>
+        <div>
+          <div style="font-size: 14px; font-weight: 700; color: var(--forest); margin-bottom: 0.4rem;">기존 채널 외 추가 매출 채널이 필요한 곳</div>
+          <div style="font-size: 13px; color: var(--muted); line-height: 1.65;">네이버·에어비앤비와 완전히 분리 운영되어 기존 예약에 영향 없이 새로운 채널을 추가할 수 있습니다.</div>
+        </div>
+      </div>
+
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: var(--pale); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">💳</div>
+        <div>
+          <div style="font-size: 14px; font-weight: 700; color: var(--forest); margin-bottom: 0.4rem;">마케팅 비용을 선투자 없이 시작하고 싶은 사장님</div>
+          <div style="font-size: 13px; color: var(--muted); line-height: 1.65;">구축비 후불, 수수료도 판매 후 정산. 초기 자금 부담 없이 리스크를 최소화하며 시작할 수 있습니다.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS CARD -->
+<section style="background: var(--forest); padding: 4rem 0;">
+  <div class="container">
+
+    <!-- 상단 멘트 -->
+    <div style="text-align: center; margin-bottom: 2.5rem;">
+      <h2 style="font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 700; color: var(--white); letter-spacing: -0.02em; margin-bottom: 0.7rem;">궁금한 점이 있으시면<br>편하게 먼저 물어보세요</h2>
+      <p style="font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.8;">의향이 없으셔도 괜찮습니다.<br>현재 숙소에 맞는 방향인지 먼저 파악해 드립니다.</p>
+    </div>
+
+    <div style="max-width: 520px; margin: 0 auto; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2.5rem; display: flex; flex-direction: column; gap: 1.8rem;">
+
+      <!-- 상단 프로필 -->
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <div style="font-size: 22px; font-weight: 700; color: var(--white); letter-spacing: -0.02em;">정환희</div>
+          <div style="font-size: 13px; color: var(--light); margin-top: 3px; display: flex; align-items: center; gap: 6px;">
+            <span>와디즈 PD</span>
+            <span style="width: 3px; height: 3px; border-radius: 50%; background: var(--mid); display: inline-block;"></span>
+            <span>숙소 펀딩 전문</span>
+          </div>
+        </div>
+        <!-- wadiz badge -->
+        <div style="margin-left: auto; background: #E83828; border-radius: 6px; padding: 5px 12px;">
+          <span style="font-size: 13px; font-weight: 700; color: white; letter-spacing: 0.02em;">wadiz</span>
+        </div>
+      </div>
+
+      <!-- 구분선 -->
+      <div style="border-top: 1px solid rgba(255,255,255,0.08);"></div>
+
+      <!-- 연락처 목록 -->
+      <div style="display: flex; flex-direction: column; gap: 0.9rem;">
+
+        <a href="tel:010-8717-8884" style="display: flex; align-items: center; gap: 12px; text-decoration: none; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+          <div style="width: 36px; height: 36px; border-radius: 9px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">📞</div>
+          <div>
+            <div style="font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 1px;">전화</div>
+            <div style="font-size: 14px; font-weight: 500; color: var(--white);">010-8717-8884</div>
+          </div>
+        </a>
+
+        <a href="mailto:hwanhui.jeong@wadiz.kr" style="display: flex; align-items: center; gap: 12px; text-decoration: none; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+          <div style="width: 36px; height: 36px; border-radius: 9px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">✉️</div>
+          <div>
+            <div style="font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 1px;">이메일</div>
+            <div style="font-size: 14px; font-weight: 500; color: var(--white);">hwanhui.jeong@wadiz.kr</div>
+          </div>
+        </a>
+
+        <a href="http://pf.kakao.com/_ybqsX/chat" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: none; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+          <div style="width: 36px; height: 36px; border-radius: 9px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">💬</div>
+          <div>
+            <div style="font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 1px;">카카오톡 채널</div>
+            <div style="font-size: 14px; font-weight: 500; color: var(--white);">와디즈-정환희pd</div>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/hee.debug_/" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: none; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+          <div style="width: 36px; height: 36px; border-radius: 9px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">📸</div>
+          <div>
+            <div style="font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 1px;">인스타그램</div>
+            <div style="font-size: 14px; font-weight: 500; color: var(--white);">@hee.debug_</div>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- 구분선 -->
+      <div style="border-top: 1px solid rgba(255,255,255,0.08);"></div>
+
+      <!-- 하단 CTA -->
+      <a href="http://pf.kakao.com/_ybqsX/chat" target="_blank" style="display: block; text-align: center; background: var(--light); color: var(--forest); font-size: 14px; font-weight: 700; padding: 13px; border-radius: 10px; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#95d5b2'" onmouseout="this.style.background='var(--light)'">
+        💬 카카오톡으로 바로 문의하기
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+  © 2025 와디즈 숙소 펀딩 제안 · 본 제안서는 영업 목적으로 제작되었습니다
+</footer>
+
+</body>
+</html>
